@@ -25,7 +25,7 @@ else
     "set guifont=SimSun\ 9
     "set guifont=Bitstream_Vera_Sans_Mono:h10:cANSI
     set guifont=Monospace\ 11
-    set guifont=WenQuanYi\ Zen\ Hei\ Mono\ 11
+    set guifont=WenQuanYi\ Micro\ Hei\ Mono\ 11
 endif
 
 " FIXED: can running on gentoo now
@@ -33,10 +33,10 @@ if has("win32")
     language mes en
     lang english 
 else
-    "language mes en_US.utf8
-    "lang en_US.utf8
-    language mes C.UTF-8
-    lang C.UTF-8
+    language mes en_US.utf8
+    lang en_US.utf8
+    "language mes C.UTF-8
+    "lang C.UTF-8
 endif
 
 set langmenu=en_US.UTF-8
@@ -452,3 +452,28 @@ filetyp plugin indent on
 " git clone https://github.com/b4winckler/vim.git ~/vim
 "
 """""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""
+"
+"           CtrlP
+"
+"""""""""""""""""""""""""""""""""""""""""""
+let g:ctrlp_map = ',,'
+let g:ctrl_open_multiple_files = 'v'
+
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip
+let g:ctrlp_custom_ignore = {
+    \ 'dir':    '\v[\/]\.(git)$',
+    \ 'file':   '\v\.(log|jpg|png|jpeg)$',
+    \ }
+
+"""""""""""""""""""""""""""""""""""""""""""
+"
+"           YouCompleteMe
+"
+"""""""""""""""""""""""""""""""""""""""""""
+nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
+nnoremap <F5> :YcmForceCompileAndDiagnostics<CR>
+let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
+"Do not ask when starting vim
+let g:ycm_confirm_extra_conf = 0
+let g:syntastic_always_populate_loc_list = 1
