@@ -373,8 +373,9 @@ let g:bufExplorerUseCurrentWindow=1  " Open in new window.
 "let g:winManagerWindowLayout='BufExplorer|FileExplorer|TagList'
 "let g:winManagerWindowLayout='TagList|FileExplorer|BufExplorer'
 let g:winManagerWindowLayout='TagList|BufExplorer'
-let g:winManagerWidth = 45
-let g:defaultExplorer = 0
+let g:winManagerWidth=45
+let g:defaultExplorer=0
+let g:bufExplorerResize=0 "close resize
 nmap <C-W><C-F> :FirstExplorerWindow<cr>
 nmap <C-W><C-B> :BottomExplorerWindow<cr>
 nmap <C-W><C-T> :WMToggle<cr>
@@ -474,6 +475,7 @@ let g:ctrlp_custom_ignore = {
 nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
 nnoremap <F5> :YcmForceCompileAndDiagnostics<CR>
 let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
-"Do not ask when starting vim
+" Do not ask when starting vim
 let g:ycm_confirm_extra_conf = 0
+let g:ycm_path_to_python_interpreter = '/usr/bin/python'
 let g:syntastic_always_populate_loc_list = 1
