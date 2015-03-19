@@ -440,6 +440,7 @@ Bundle 'kien/ctrlp.vim'
 Bundle 'Valloric/YouCompleteMe'
 Bundle 'tpope/vim-surround'
 Bundle 'EasyGrep'
+Bundle 'jiangmiao/auto-pairs'
 "Bundle 'VimIM'
 
 """""""""""""""""""""""""""""""""""""""
