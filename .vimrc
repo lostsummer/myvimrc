@@ -25,7 +25,8 @@ else
     "set guifont=SimSun\ 9
     "set guifont=Bitstream_Vera_Sans_Mono:h10:cANSI
     set guifont=Monospace\ 11
-    set guifont=WenQuanYi\ Micro\ Hei\ Mono\ 11
+    "set guifont=WenQuanYi\ Micro\ Hei\ Mono\ 11
+    set guifont=WenQuanYi\ Zen\ Hei\ Mono\ 12
 endif
 
 " FIXED: can running on gentoo now
@@ -33,10 +34,10 @@ if has("win32")
     language mes en
     lang english 
 else
-    language mes en_US.utf8
-    lang en_US.utf8
-    "language mes C.UTF-8
-    "lang C.UTF-8
+    "language mes en_US.utf8
+    "lang en_US.utf8
+    language mes C.UTF-8
+    lang C.UTF-8
 endif
 
 set langmenu=en_US.UTF-8
