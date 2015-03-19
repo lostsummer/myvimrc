@@ -373,8 +373,8 @@ let g:bufExplorerUseCurrentWindow=1  " Open in new window.
 """"""""""""""""""""""""""""""
 "let g:winManagerWindowLayout='BufExplorer|FileExplorer|TagList'
 "let g:winManagerWindowLayout='TagList|FileExplorer|BufExplorer'
-let g:winManagerWindowLayout='TagList|BufExplorer'
-let g:winManagerWidth=45
+let g:winManagerWindowLayout='FileExplorer|TagList|BufExplorer'
+let g:winManagerWidth=30
 let g:defaultExplorer=0
 let g:bufExplorerResize=0 "close resize
 nmap <C-W><C-F> :FirstExplorerWindow<cr>
