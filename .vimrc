@@ -47,13 +47,22 @@ if has("win32")
     winpos  250 0
 endif
 
-set guioptions-=T
+" Toogle Menu and Toolbar
 set guioptions-=t
 set guioptions-=L
 set guioptions-=r
 set guioptions-=B
 set guioptions-=e
 set guioptions+=c
+set guioptions-=m
+set guioptions-=T
+map <silent> <F2> :if &guioptions =~# 'T' <Bar>
+		\set guioptions-=T <Bar>
+		\set guioptions-=m <Bar>
+	\else <Bar>
+		\set guioptions+=T <Bar>
+		\set guioptions+=m <Bar>
+	\endif<CR>
 
 " statusline show info
 set laststatus=2
@@ -374,6 +383,7 @@ let g:bufExplorerUseCurrentWindow=1  " Open in new window.
 "let g:winManagerWindowLayout='BufExplorer|FileExplorer|TagList'
 "let g:winManagerWindowLayout='TagList|FileExplorer|BufExplorer'
 let g:winManagerWindowLayout='FileExplorer|TagList|BufExplorer'
+"let g:winManagerWindowLayout='FileExplorer|TagList'
 let g:winManagerWidth=30
 let g:defaultExplorer=0
 let g:bufExplorerResize=0 "close resize
@@ -476,7 +486,7 @@ let g:ctrlp_custom_ignore = {
 """""""""""""""""""""""""""""""""""""""""""
 nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
 nnoremap <F5> :YcmForceCompileAndDiagnostics<CR>
-let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
+let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
 " Do not ask when starting vim
 let g:ycm_confirm_extra_conf = 0
 let g:ycm_path_to_python_interpreter = '/usr/bin/python'
