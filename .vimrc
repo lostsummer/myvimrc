@@ -382,7 +382,7 @@ let g:bufExplorerUseCurrentWindow=1  " Open in new window.
 """"""""""""""""""""""""""""""
 "let g:winManagerWindowLayout='BufExplorer|FileExplorer|TagList'
 "let g:winManagerWindowLayout='TagList|FileExplorer|BufExplorer'
-let g:winManagerWindowLayout='FileExplorer|TagList|BufExplorer'
+let g:winManagerWindowLayout='FileExplorer|BufExplorer'
 "let g:winManagerWindowLayout='FileExplorer|TagList'
 let g:winManagerWidth=30
 let g:defaultExplorer=0
@@ -484,7 +484,7 @@ let g:ctrlp_custom_ignore = {
 "           YouCompleteMe
 "
 """""""""""""""""""""""""""""""""""""""""""
-nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
+nnoremap <leader>j :YcmCompleter GoToDefinitionElseDeclaration<CR>
 nnoremap <F5> :YcmForceCompileAndDiagnostics<CR>
 let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
 " Do not ask when starting vim
