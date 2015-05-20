@@ -451,6 +451,7 @@ Bundle 'Valloric/YouCompleteMe'
 Bundle 'tpope/vim-surround'
 Bundle 'EasyGrep'
 Bundle 'jiangmiao/auto-pairs'
+Bundle 'nvie/vim-flake8'
 "Bundle 'VimIM'
 
 """""""""""""""""""""""""""""""""""""""
