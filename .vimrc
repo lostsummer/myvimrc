@@ -1,7 +1,5 @@
 " $VIM/.vimrc
 " vim: set ts=4 sw=4 expandtab enc=utf-8: 
-" Python programming with Vim (vim7.2 + python2.6) config file.
-" Last modified: 2009-2-10 10:25:39 [HERO-5C126C0F8C]
 
 " When started as "evim", evim.vim will already have done these settings.
 if v:progname =~? "evim"
@@ -22,10 +20,7 @@ if has("win32")
     set guifont=Consolas:h10.5
     "set guifont=Yahei_Mono:h11:cGB2312
 else
-    "set guifont=SimSun\ 9
-    "set guifont=Bitstream_Vera_Sans_Mono:h10:cANSI
     set guifont=Monospace\ 11
-    "set guifont=WenQuanYi\ Micro\ Hei\ Mono\ 11
     set guifont=WenQuanYi\ Zen\ Hei\ Mono\ 12
 endif
 
@@ -64,10 +59,7 @@ map <silent> <F2> :if &guioptions =~# 'T' <Bar>
 		\set guioptions+=m <Bar>
 	\endif<CR>
 
-" statusline show info
 set laststatus=2
-set statusline=%<%F%m%r%h\ %=\ [%{&ff}]\ [%{(&fenc\ ==\ \"\"?&enc:&fenc).(&bomb?\",BOM\":\"\")}]\ [%l/%L:%c]\ %P
-
 if has('gui_running')
     " Always show file types in menu
     let do_syntax_sel_menu=1
@@ -90,14 +82,11 @@ if has('gui_running') && has('multi_byte')
 endif
 
 " utf-8 for cross platform
-"set bomb
-"set encoding=utf-8
-"set termencoding=utf-8
-"set fileencoding=utf-8
-"set fileencodings=utf-8,cp936,gb18030,big5,euc-jp,utf-bom,iso8859-1
-
-" <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-" }}}
+set bomb
+set encoding=utf-8
+set termencoding=utf-8
+set fileencoding=utf-8
+set fileencodings=utf-8,cp936,gb18030,big5,euc-jp,utf-bom,iso8859-1
 
 
 " {{{ Shell part
@@ -141,12 +130,6 @@ set cursorline          " show current line
 set number              " show line number
 set autoindent          " always set autoindenting on
 set report=0            " tell us when anything is changed via :...
-"if has("vms")
-"    set nobackup          " do not keep a backup file, use versions instead
-"else
-"    set backup            " keep a backup file
-"    set backupdir=$VIM/backup
-"endif
 set nobackup            " do not keep backup file.
 set history=50          " keep 50 lines of command line history
 set ruler               " show the cursor position all the time
@@ -241,20 +224,6 @@ if has("autocmd")
 
 endif " has("autocmd")
 
-" <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-" }}}
-
-
-
-
-" {{{ Plugin part
-" >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-
-" vimfiles/plugin/autocomplpop.vim
-" let g:AutoComplPop_MappingDriven=1
-" let g:AutoComplPop_BehaviorKeywordLength=4
-
-" vimfiles/plugin/taglist.vim
 
 " FIXED: can running on gentoo now
 if has("win32")
@@ -438,28 +407,29 @@ map <F3>c o/** */<left><left>
 "
 """""""""""""""""""""""""""""""""""""""""
 set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+call vundle#begin()
 " let Vundle manage Vundle
-Bundle 'gmarik/vundle'
-" my Bundle here:
+Plugin 'gmarik/vundle'
+" my Plugin here:
 "
 " original repos on github
-Bundle 'vimwiki/vimwiki'
-Bundle 'vim-scripts/taglist.vim'
-Bundle 'vim-scripts/winmanager'
-Bundle 'corntrace/bufexplorer'
-Bundle 'kien/ctrlp.vim'
-Bundle 'Valloric/YouCompleteMe'
-Bundle 'tpope/vim-surround'
-Bundle 'EasyGrep'
-Bundle 'jiangmiao/auto-pairs'
-Bundle 'nvie/vim-flake8'
-Bundle 'hdima/python-syntax'
-"Bundle 'VimIM'
+Plugin 'vimwiki/vimwiki'
+Plugin 'vim-scripts/taglist.vim'
+Plugin 'vim-scripts/winmanager'
+Plugin 'corntrace/bufexplorer'
+Plugin 'kien/ctrlp.vim'
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'tpope/vim-surround'
+Plugin 'EasyGrep'
+Plugin 'jiangmiao/auto-pairs'
+Plugin 'nvie/vim-flake8'
+Plugin 'hdima/python-syntax'
+Plugin 'Lokaltog/vim-powerline'
+call vundle#end()
 
 """""""""""""""""""""""""""""""""""""""
 " non github repos
-" Bundle 'git://git.wincent.com/command-t.git'
+" Plugin 'git://git.wincent.com/command-t.git'
 "
 """""""""""""""""""""""""""""""""""""""
 filetyp plugin indent on
