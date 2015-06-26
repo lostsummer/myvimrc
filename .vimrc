@@ -172,6 +172,8 @@ if &t_Co > 2 || has("gui_running")
     set hlsearch
 endif
 
+set t_Co=256
+
 " Set mapleader
 let mapleader = ","
 let g:mapleader = ","
@@ -452,6 +454,7 @@ Bundle 'tpope/vim-surround'
 Bundle 'EasyGrep'
 Bundle 'jiangmiao/auto-pairs'
 Bundle 'nvie/vim-flake8'
+Bundle 'hdima/python-syntax'
 "Bundle 'VimIM'
 
 """""""""""""""""""""""""""""""""""""""
@@ -492,3 +495,11 @@ let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/
 let g:ycm_confirm_extra_conf = 0
 let g:ycm_path_to_python_interpreter = '/usr/bin/python'
 let g:syntastic_always_populate_loc_list = 1
+
+"""""""""""""""""""""""""""""""""""""""""""
+"
+"			Python Syntax
+"
+"""""""""""""""""""""""""""""""""""""""""""
+let python_highlight_all = 1
+let python_version_2 = 1
