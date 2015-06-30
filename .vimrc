@@ -144,6 +144,7 @@ set foldmethod=manual   " manual, marker, syntax, try set foldcolumn=2
 " DO NOT BELL!
 set novisualbell        " use visual bell instead of beeping
 set noerrorbells        " do not make noise
+set ignorecase smartcase
 
 " Don't use Ex mode, use Q for formatting
 " map Q gq
