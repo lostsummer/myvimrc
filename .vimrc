@@ -1,6 +1,9 @@
 " $VIM/.vimrc
 " vim: set ts=4 sw=4 expandtab enc=utf-8: 
 
+" github 配置下载
+" git clone https://github.com/lostsummer/myvimrc.git ~/.vim
+
 " When started as "evim", evim.vim will already have done these settings.
 if v:progname =~? "evim"
     finish
