@@ -237,7 +237,7 @@ else
 
 endif
 
-let g:Tlist_Use_Right_Window=0
+let g:Tlist_Use_Right_Window=1
 let g:Tlist_Exit_OnlyWindow=1
 let g:Tlist_Sort_Type=1
 let g:Tlist_Enable_Fold_Colum=0
@@ -248,7 +248,6 @@ let g:Tlist_File_Fold_Auto_Close=1
 
 " visible mode use ,t to open Tlist
 nmap <leader>t :TlistToggle<CR>
-let g:Tlist_Use_Right_Window = 1
 
 " be able to move between the tabs with ALT+LeftArrow and ALT+RightArrow
 map <silent><A-Right> :tabnext<CR>
