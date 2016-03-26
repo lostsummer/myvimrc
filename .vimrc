@@ -23,8 +23,10 @@ if has("win32")
     set guifont=Consolas:h10.5
     "set guifont=Yahei_Mono:h11:cGB2312
 else
-    set guifont=Monospace\ 11
-    set guifont=WenQuanYi\ Zen\ Hei\ Mono\ 12
+    "set guifont=Monospace\ 11
+    "set guifont=WenQuanYi\ Zen\ Hei\ Mono\ 12
+    set guifont=Droid\ Sans\ Mono\ for\ Powerline\ Regular\ 11
+	"let g:Powerline_symbols = 'fancy'
 endif
 
 " FIXED: can running on gentoo now
@@ -423,6 +425,7 @@ Plugin 'vim-scripts/winmanager'
 Plugin 'corntrace/bufexplorer'
 Plugin 'kien/ctrlp.vim'
 Plugin 'Valloric/YouCompleteMe'
+Plugin 'tdcdev/ycm_simple_conf'
 Plugin 'tpope/vim-surround'
 Plugin 'EasyGrep'
 Plugin 'jiangmiao/auto-pairs'
@@ -464,9 +467,11 @@ let g:ctrlp_custom_ignore = {
 """""""""""""""""""""""""""""""""""""""""""
 nnoremap <leader>j :YcmCompleter GoToDefinitionElseDeclaration<CR>
 nnoremap <F5> :YcmForceCompileAndDiagnostics<CR>
-let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
+" let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
 " Do not ask when starting vim
 let g:ycm_confirm_extra_conf = 0
+" Disabel ycm_simple_conf
+" let g:ycm_simple_conf_active = 0
 let g:ycm_path_to_python_interpreter = '/usr/bin/python'
 let g:syntastic_always_populate_loc_list = 1
 
@@ -477,3 +482,8 @@ let g:syntastic_always_populate_loc_list = 1
 """""""""""""""""""""""""""""""""""""""""""
 let python_highlight_all = 1
 let python_version_2 = 1
+
+"""""""""""""""""""""""""""""""""""""""""""
+"          Power line
+"""""""""""""""""""""""""""""""""""""""""""
+set rtp+=/usr/lib/python2.7/dist-packages/powerline/bindings/vim

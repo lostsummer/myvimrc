@@ -1,0 +1,5 @@
+<project type="c++">
+    <include path="include"/>
+    <include path="build"/>
+    <define name="apue"/>
+</project>
