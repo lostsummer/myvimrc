@@ -432,6 +432,7 @@ Plugin 'jiangmiao/auto-pairs'
 Plugin 'nvie/vim-flake8'
 Plugin 'hdima/python-syntax'
 Plugin 'Lokaltog/vim-powerline'
+Plugin 'vim-scripts/nginx.vim'
 call vundle#end()
 
 """""""""""""""""""""""""""""""""""""""
@@ -466,6 +467,7 @@ let g:ctrlp_custom_ignore = {
 "
 """""""""""""""""""""""""""""""""""""""""""
 nnoremap <leader>j :YcmCompleter GoToDefinitionElseDeclaration<CR>
+" nnoremap <leader>j :YcmCompleter GoTo<CR>
 nnoremap <F5> :YcmForceCompileAndDiagnostics<CR>
 " let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
 " Do not ask when starting vim
