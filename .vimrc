@@ -33,11 +33,14 @@ endif
 if has("win32")
     language mes en
     lang english 
-else
+elseif has("mac")
     "language mes en_US.utf8
     "lang en_US.utf8
-    language mes C.UTF-8
-    lang C.UTF-8
+    language mes zh_CN.UTF-8
+    lang zh_CN.UTF-8
+else
+    language mes zh_CN.utf8
+    lang zh_CN.utf8
 endif
 
 set langmenu=en_US.UTF-8
@@ -238,7 +241,7 @@ if has("win32")
     "let g:Tlist_Ctags_Cmd='"' . $VIMRUNTIME . '\ctags' . '"'
     "let g:Tlist_Ctags_Cmd="d:\\Program\ Files\\Vim\\ctags"
 else
-    let g:Tlist_Ctags_Cmd='/usr/bin/ctags'
+    let g:Tlist_Ctags_Cmd='ctags'
 
 endif
 
@@ -398,7 +401,7 @@ let g:vimwiki_list = [{'path': '~/workspace/vimwiki',
 """"""""""""""""""""""""""""""
 set noendofline binary
 
-let g:doxygenToolkit_authorName="yxwang"
+let g:doxygenToolkit_authorName="yushin.wang"
 let g:doxygenToolkit_briefTag_funcName="yes"
 
 map <F3>a :DoxAuthor
@@ -433,6 +436,7 @@ Plugin 'nvie/vim-flake8'
 Plugin 'hdima/python-syntax'
 Plugin 'Lokaltog/vim-powerline'
 Plugin 'vim-scripts/nginx.vim'
+Plugin 'vim-scripts/DoxygenToolkit.vim'
 call vundle#end()
 
 """""""""""""""""""""""""""""""""""""""
