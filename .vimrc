@@ -94,7 +94,7 @@ set bomb
 set encoding=utf-8
 set termencoding=utf-8
 set fileencoding=utf-8
-set fileencodings=utf-8,cp936,gb18030,big5,euc-jp,utf-bom,iso8859-1
+set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1
 
 
 " {{{ Shell part
@@ -437,6 +437,7 @@ Plugin 'hdima/python-syntax'
 Plugin 'Lokaltog/vim-powerline'
 Plugin 'vim-scripts/nginx.vim'
 Plugin 'vim-scripts/DoxygenToolkit.vim'
+Plugin 'mbbill/fencview'
 call vundle#end()
 
 """""""""""""""""""""""""""""""""""""""
