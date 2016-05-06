@@ -1,7 +1,22 @@
 " $VIM/.vimrc
 " vim: set ts=4 sw=4 expandtab enc=utf-8: 
 
-" github 配置下载
+" my vim compile option:
+" enable python3 support for ycm unicode
+
+"./configure --with-features=huge \                                                                       
+"            --enable-multibyte \
+"            --enable-rubyinterp \
+"            --enable-pythoninterp \
+"            --with-python-config-dir=/usr/lib/python2.7/config \
+"            --enable-python3interp \
+"            --with-python3-config-dir=/usr/lib/python3.4/config-3.4m-x86_64-linux-gnu \
+"            --enable-perlinterp \
+"            --enable-luainterp \
+"            --enable-gui=gtk2 --enable-cscope --prefix=/usr
+
+
+" thisfile@github
 " git clone https://github.com/lostsummer/myvimrc.git ~/.vim
 
 " When started as "evim", evim.vim will already have done these settings.
@@ -68,26 +83,6 @@ map <silent> <F2> :if &guioptions =~# 'T' <Bar>
 	\endif<CR>
 
 set laststatus=2
-if has('gui_running')
-    " Always show file types in menu
-    let do_syntax_sel_menu=1
-endif
-
-if has('multi_byte')
-    " Legacy encoding is the system default encoding
-    let legacy_encoding=&encoding
-endif
-
-if has('gui_running') && has('multi_byte')
-    " Set encoding (and possibly fileencodings)
-    if $LANG !~ '\.' || $LANG =~? '\.UTF-8$'
-        set encoding=utf-8
-    else
-        let &encoding=matchstr($LANG, '\.\zs.*')
-        let &fileencodings='ucs-bom,utf-8,' . &encoding
-        let legacy_encoding=&encoding
-    endif
-endif
 
 " utf-8 for cross platform
 set bomb
@@ -95,6 +90,8 @@ set encoding=utf-8
 set termencoding=utf-8
 set fileencoding=utf-8
 set fileencodings=ucs-bom,utf-8,cp936,gb18030,big5,euc-jp,euc-kr,latin1
+
+set fileformats=unix,dos
 
 
 " {{{ Shell part
@@ -234,17 +231,6 @@ if has("autocmd")
 endif " has("autocmd")
 
 
-" FIXED: can running on gentoo now
-if has("win32")
-    "$VIMRUNTIME 变量包含空格导致找不到ctags
-    "解决方法还不明
-    "let g:Tlist_Ctags_Cmd='"' . $VIMRUNTIME . '\ctags' . '"'
-    "let g:Tlist_Ctags_Cmd="d:\\Program\ Files\\Vim\\ctags"
-else
-    let g:Tlist_Ctags_Cmd='ctags'
-
-endif
-
 let g:Tlist_Use_Right_Window=1
 let g:Tlist_Exit_OnlyWindow=1
 let g:Tlist_Sort_Type=1
@@ -332,12 +318,6 @@ endif
 map  <leader>q :copen<CR>
 nmap <leader>c :cclose<CR>
 
-" <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-" }}}
-
-""""""""""""""""""""""""""""""
-"wangyx add 2010-07-14 >>>>>>>
-""""""""""""""""""""""""""""""
 
 """"""""""""""""""""""""""""""
 "indent
@@ -376,13 +356,6 @@ nmap <C-W><C-T> :WMToggle<cr>
 """"""""""""""""""""""""""""""
 set tags=tags;
 set autochdir
-"function! SET_LOCAL_TAGS(tagdir)
-"    let dir = expand("%:p:h") "获得源文件路径
-"    if stridx(dir, a:tagdir)==0  "路径在指定文件夹里。
-"        set tags+=C:\cygwin\home\Administrator\workspace\csvroot\level2II\src\tags
-"    endif
-"endfunction
-"autocmd BufEnter * call SET_LOCAL_TAGS(ctagspath)
 
 """"""""""""""""""""""""""""""
 " vimwiki
@@ -392,13 +365,6 @@ let g:vimwiki_list = [{'path': '~/workspace/vimwiki',
 \'path_html':'~/workspace/vimwiki/html/',
 \ 'html_header': '~/workspace/vimwiki/template/header.tpl',}] 
 
-""""""""""""""""""""""""""""""
-"wangyx add 2010-07-14 <<<<<<<
-""""""""""""""""""""""""""""""
-
-""""""""""""""""""""""""""""""
-"wangyx add 2013-04-18 
-""""""""""""""""""""""""""""""
 set noendofline binary
 
 let g:doxygenToolkit_authorName="yushin.wang"
@@ -428,7 +394,7 @@ Plugin 'vim-scripts/winmanager'
 Plugin 'corntrace/bufexplorer'
 Plugin 'kien/ctrlp.vim'
 Plugin 'Valloric/YouCompleteMe'
-Plugin 'tdcdev/ycm_simple_conf'
+"Plugin 'tdcdev/ycm_simple_conf'
 Plugin 'tpope/vim-surround'
 Plugin 'EasyGrep'
 Plugin 'jiangmiao/auto-pairs'
@@ -478,19 +444,32 @@ let g:EasyGrepIgnoreCase = 1 " not ignorecase:0
 let g:EasyGrepFilesToExclude = "*.bak, *~, cscope.*, *.a, *.o, *.pyc, *.bak"
 
 """""""""""""""""""""""""""""""""""""""""""
+"          fencview
+"""""""""""""""""""""""""""""""""""""""""""
+let g:fencview_autodetect = 1
+let g:fencview_checklines = 100
+let g:fencview_auto_patterns='*'
+map <F2> :FencView<cr>
+
+"""""""""""""""""""""""""""""""""""""""""""
 "
 "           YouCompleteMe
 "
 """""""""""""""""""""""""""""""""""""""""""
+" ycm install command
+" python3 install.py --clang-completer  --gocode-completer
+
 nnoremap <leader>j :YcmCompleter GoToDefinitionElseDeclaration<CR>
 " nnoremap <leader>j :YcmCompleter GoTo<CR>
 nnoremap <F5> :YcmForceCompileAndDiagnostics<CR>
-" let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
+let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
 " Do not ask when starting vim
 let g:ycm_confirm_extra_conf = 0
 " Disabel ycm_simple_conf
-" let g:ycm_simple_conf_active = 0
-let g:ycm_path_to_python_interpreter = '/usr/bin/python'
+"let g:ycm_simple_conf_active = 0
+" let g:ycm_path_to_python_interpreter = '/usr/bin/python'
+let g:ycm_path_to_python_interpreter = '/usr/bin/python3'
+" let g:ycm_server_python_interpreter = '/usr/bin/python3'
 let g:syntastic_always_populate_loc_list = 1
 
 """""""""""""""""""""""""""""""""""""""""""
@@ -504,4 +483,5 @@ let python_version_2 = 1
 """""""""""""""""""""""""""""""""""""""""""
 "          Power line
 """""""""""""""""""""""""""""""""""""""""""
-set rtp+=/usr/lib/python2.7/dist-packages/powerline/bindings/vim
+"set rtp+=/usr/lib/python2.7/dist-packages/powerline/bindings/vim
+
