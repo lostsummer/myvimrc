@@ -4,7 +4,7 @@
 " my vim compile option:
 " enable python3 support for ycm unicode
 
-"./configure --with-features=huge \                                                                       
+"./configure --with-features=huge \
 "            --enable-multibyte \
 "            --enable-rubyinterp \
 "            --enable-pythoninterp \
@@ -404,6 +404,8 @@ Plugin 'Lokaltog/vim-powerline'
 Plugin 'vim-scripts/nginx.vim'
 Plugin 'vim-scripts/DoxygenToolkit.vim'
 Plugin 'mbbill/fencview'
+Plugin 'godlygeek/tabular'
+Plugin 'plasticboy/vim-markdown'
 call vundle#end()
 
 """""""""""""""""""""""""""""""""""""""
@@ -446,7 +448,7 @@ let g:EasyGrepFilesToExclude = "*.bak, *~, cscope.*, *.a, *.o, *.pyc, *.bak"
 """""""""""""""""""""""""""""""""""""""""""
 "          fencview
 """""""""""""""""""""""""""""""""""""""""""
-let g:fencview_autodetect = 1
+let g:fencview_autodetect = 0
 let g:fencview_checklines = 100
 let g:fencview_auto_patterns='*'
 map <F2> :FencView<cr>
@@ -485,3 +487,9 @@ let python_version_2 = 1
 """""""""""""""""""""""""""""""""""""""""""
 "set rtp+=/usr/lib/python2.7/dist-packages/powerline/bindings/vim
 
+"""""""""""""""""""""""""""""""""""""""""""
+"         vim-markdown 
+"""""""""""""""""""""""""""""""""""""""""""
+let g:vim_markdown_folding_disabled = 1
+let g:vim_markdown_toc_autofit = 1
+let g:vim_markdown_math = 1
