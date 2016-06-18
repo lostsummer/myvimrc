@@ -4,7 +4,7 @@
 " my vim compile option:
 " enable python3 support for ycm unicode
 
-"./configure --with-features=huge \                                                                       
+"./configure --with-features=huge \
 "            --enable-multibyte \
 "            --enable-rubyinterp \
 "            --enable-pythoninterp \
@@ -40,7 +40,8 @@ if has("win32")
 else
     "set guifont=Monospace\ 11
     "set guifont=WenQuanYi\ Zen\ Hei\ Mono\ 12
-    set guifont=Droid\ Sans\ Mono\ for\ Powerline\ Regular\ 11
+    set guifont=WenQuanYi\ Micro\ Hei\ Mono\ 11
+    "set guifont=Droid\ Sans\ Mono\ for\ Powerline\ Regular\ 11
 	"let g:Powerline_symbols = 'fancy'
 endif
 
@@ -404,6 +405,8 @@ Plugin 'powerline/powerline', {'rtp': 'powerline/bindings/vim/'}
 Plugin 'vim-scripts/nginx.vim'
 Plugin 'vim-scripts/DoxygenToolkit.vim'
 Plugin 'mbbill/fencview'
+Plugin 'godlygeek/tabular'
+Plugin 'plasticboy/vim-markdown'
 call vundle#end()
 
 """""""""""""""""""""""""""""""""""""""
@@ -460,6 +463,7 @@ map <F2> :FencView<cr>
 " python3 install.py --clang-completer  --gocode-completer
 
 nnoremap <leader>j :YcmCompleter GoToDefinitionElseDeclaration<CR>
+nnoremap <leader>jd :YcmCompleter GoToDefinition<CR>
 " nnoremap <leader>j :YcmCompleter GoTo<CR>
 nnoremap <F5> :YcmForceCompileAndDiagnostics<CR>
 let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
@@ -485,3 +489,9 @@ let python_version_2 = 1
 """""""""""""""""""""""""""""""""""""""""""
 "set rtp+=/usr/lib/python2.7/dist-packages/powerline/bindings/vim
 
+"""""""""""""""""""""""""""""""""""""""""""
+"         vim-markdown 
+"""""""""""""""""""""""""""""""""""""""""""
+let g:vim_markdown_folding_disabled = 1
+let g:vim_markdown_toc_autofit = 1
+let g:vim_markdown_math = 1
