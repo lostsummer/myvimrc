@@ -400,7 +400,7 @@ Plugin 'EasyGrep'
 Plugin 'jiangmiao/auto-pairs'
 Plugin 'nvie/vim-flake8'
 Plugin 'hdima/python-syntax'
-Plugin 'Lokaltog/vim-powerline'
+Plugin 'powerline/powerline', {'rtp': 'powerline/bindings/vim/'}
 Plugin 'vim-scripts/nginx.vim'
 Plugin 'vim-scripts/DoxygenToolkit.vim'
 Plugin 'mbbill/fencview'
@@ -446,7 +446,7 @@ let g:EasyGrepFilesToExclude = "*.bak, *~, cscope.*, *.a, *.o, *.pyc, *.bak"
 """""""""""""""""""""""""""""""""""""""""""
 "          fencview
 """""""""""""""""""""""""""""""""""""""""""
-let g:fencview_autodetect = 1
+let g:fencview_autodetect = 0
 let g:fencview_checklines = 100
 let g:fencview_auto_patterns='*'
 map <F2> :FencView<cr>
