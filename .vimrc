@@ -40,8 +40,9 @@ if has("win32")
 else
     "set guifont=Monospace\ 11
     "set guifont=WenQuanYi\ Zen\ Hei\ Mono\ 12
-    set guifont=WenQuanYi\ Micro\ Hei\ Mono\ 11
+    "set guifont=WenQuanYi\ Micro\ Hei\ Mono\ 11
     "set guifont=Droid\ Sans\ Mono\ for\ Powerline\ Regular\ 11
+    set guifont=Droid\ Sans\ Mono\ Dotted\ for\ Powerline\ Regular\ 11
 	"let g:Powerline_symbols = 'fancy'
 endif
 
