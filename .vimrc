@@ -408,6 +408,8 @@ Plugin 'vim-scripts/DoxygenToolkit.vim'
 Plugin 'mbbill/fencview'
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
+Plugin 'xolox/vim-misc'
+Plugin 'xolox/vim-lua-ftplugin'
 call vundle#end()
 
 """""""""""""""""""""""""""""""""""""""
@@ -476,6 +478,20 @@ let g:ycm_confirm_extra_conf = 0
 let g:ycm_path_to_python_interpreter = '/usr/bin/python3'
 " let g:ycm_server_python_interpreter = '/usr/bin/python3'
 let g:syntastic_always_populate_loc_list = 1
+
+"""""""""""""""""""""""""""""""""""""""""""
+"
+"			vim-lua
+"
+"""""""""""""""""""""""""""""""""""""""""""
+let g:lua_interpreter_path = '/usr/bin/lua'
+let g:lua_compiler_name = '/usr/bin/luac'
+let g:lua_complete_omni = 1
+let g:lua_complete_dynamic = 0
+let g:lua_omni_blacklist = ['pl\.strict', 'lgi\..']
+let g:lua_safe_omni_modules = 1
+"let g:lua_define_completefunc = 0
+"let g:lua_define_omnifunc = 0
 
 """""""""""""""""""""""""""""""""""""""""""
 "
