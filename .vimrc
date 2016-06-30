@@ -359,13 +359,6 @@ nmap <C-W><C-T> :WMToggle<cr>
 set tags=tags;
 set autochdir
 
-""""""""""""""""""""""""""""""
-" vimwiki
-""""""""""""""""""""""""""""""
-let g:vimwiki_use_mouse=1
-let g:vimwiki_list = [{'path': '~/workspace/vimwiki',
-\'path_html':'~/workspace/vimwiki/html/',
-\ 'html_header': '~/workspace/vimwiki/template/header.tpl',}] 
 
 set noendofline binary
 
@@ -390,13 +383,11 @@ Plugin 'gmarik/vundle'
 " my Plugin here:
 "
 " original repos on github
-Plugin 'vimwiki/vimwiki'
 Plugin 'vim-scripts/taglist.vim'
 Plugin 'vim-scripts/winmanager'
 Plugin 'corntrace/bufexplorer'
 Plugin 'kien/ctrlp.vim'
 Plugin 'Valloric/YouCompleteMe'
-"Plugin 'tdcdev/ycm_simple_conf'
 Plugin 'tpope/vim-surround'
 Plugin 'EasyGrep'
 Plugin 'jiangmiao/auto-pairs'
@@ -410,6 +401,8 @@ Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'xolox/vim-misc'
 Plugin 'xolox/vim-lua-ftplugin'
+Plugin 'terryma/vim-multiple-cursors'
+Plugin 'SirVer/ultisnips'
 call vundle#end()
 
 """""""""""""""""""""""""""""""""""""""
