@@ -40,8 +40,9 @@ if has("win32")
 else
     "set guifont=Monospace\ 11
     "set guifont=WenQuanYi\ Zen\ Hei\ Mono\ 12
-    set guifont=WenQuanYi\ Micro\ Hei\ Mono\ 11
+    "set guifont=WenQuanYi\ Micro\ Hei\ Mono\ 11
     "set guifont=Droid\ Sans\ Mono\ for\ Powerline\ Regular\ 11
+    set guifont=Droid\ Sans\ Mono\ Dotted\ for\ Powerline\ Regular\ 11
 	"let g:Powerline_symbols = 'fancy'
 endif
 
@@ -358,13 +359,6 @@ nmap <C-W><C-T> :WMToggle<cr>
 set tags=tags;
 set autochdir
 
-""""""""""""""""""""""""""""""
-" vimwiki
-""""""""""""""""""""""""""""""
-let g:vimwiki_use_mouse=1
-let g:vimwiki_list = [{'path': '~/workspace/vimwiki',
-\'path_html':'~/workspace/vimwiki/html/',
-\ 'html_header': '~/workspace/vimwiki/template/header.tpl',}] 
 
 set noendofline binary
 
@@ -389,13 +383,11 @@ Plugin 'gmarik/vundle'
 " my Plugin here:
 "
 " original repos on github
-Plugin 'vimwiki/vimwiki'
 Plugin 'vim-scripts/taglist.vim'
 Plugin 'vim-scripts/winmanager'
 Plugin 'corntrace/bufexplorer'
 Plugin 'kien/ctrlp.vim'
 Plugin 'Valloric/YouCompleteMe'
-"Plugin 'tdcdev/ycm_simple_conf'
 Plugin 'tpope/vim-surround'
 Plugin 'EasyGrep'
 Plugin 'jiangmiao/auto-pairs'
@@ -407,6 +399,10 @@ Plugin 'vim-scripts/DoxygenToolkit.vim'
 Plugin 'mbbill/fencview'
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
+Plugin 'xolox/vim-misc'
+Plugin 'xolox/vim-lua-ftplugin'
+Plugin 'terryma/vim-multiple-cursors'
+Plugin 'SirVer/ultisnips'
 call vundle#end()
 
 """""""""""""""""""""""""""""""""""""""
@@ -475,6 +471,20 @@ let g:ycm_confirm_extra_conf = 0
 "let g:ycm_path_to_python_interpreter = '/usr/bin/python3'
 " let g:ycm_server_python_interpreter = '/usr/bin/python3'
 let g:syntastic_always_populate_loc_list = 1
+
+"""""""""""""""""""""""""""""""""""""""""""
+"
+"			vim-lua
+"
+"""""""""""""""""""""""""""""""""""""""""""
+let g:lua_interpreter_path = '/usr/bin/lua'
+let g:lua_compiler_name = '/usr/bin/luac'
+let g:lua_complete_omni = 1
+let g:lua_complete_dynamic = 0
+let g:lua_omni_blacklist = ['pl\.strict', 'lgi\..']
+let g:lua_safe_omni_modules = 1
+"let g:lua_define_completefunc = 0
+"let g:lua_define_omnifunc = 0
 
 """""""""""""""""""""""""""""""""""""""""""
 "
