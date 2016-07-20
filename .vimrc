@@ -393,7 +393,7 @@ Plugin 'vim-scripts/taglist.vim'
 Plugin 'vim-scripts/winmanager'
 Plugin 'corntrace/bufexplorer'
 Plugin 'kien/ctrlp.vim'
-Plugin 'Valloric/YouCompleteMe'
+"Plugin 'Valloric/YouCompleteMe'
 "Plugin 'tdcdev/ycm_simple_conf'
 Plugin 'tpope/vim-surround'
 Plugin 'EasyGrep'
@@ -448,7 +448,7 @@ let g:EasyGrepFilesToExclude = "*.bak, *~, cscope.*, *.a, *.o, *.pyc, *.bak"
 """""""""""""""""""""""""""""""""""""""""""
 "          fencview
 """""""""""""""""""""""""""""""""""""""""""
-let g:fencview_autodetect = 0
+let g:fencview_autodetect = 1
 let g:fencview_checklines = 100
 let g:fencview_auto_patterns='*'
 map <F2> :FencView<cr>
@@ -461,18 +461,18 @@ map <F2> :FencView<cr>
 " ycm install command
 " python3 install.py --clang-completer  --gocode-completer
 
-nnoremap <leader>j :YcmCompleter GoToDefinitionElseDeclaration<CR>
+"nnoremap <leader>j :YcmCompleter GoToDefinitionElseDeclaration<CR>
 " nnoremap <leader>j :YcmCompleter GoTo<CR>
-nnoremap <F5> :YcmForceCompileAndDiagnostics<CR>
-let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
+"nnoremap <F5> :YcmForceCompileAndDiagnostics<CR>
+"let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
 " Do not ask when starting vim
-let g:ycm_confirm_extra_conf = 0
+"let g:ycm_confirm_extra_conf = 0
 " Disabel ycm_simple_conf
 "let g:ycm_simple_conf_active = 0
 " let g:ycm_path_to_python_interpreter = '/usr/bin/python'
-let g:ycm_path_to_python_interpreter = '/usr/bin/python3'
+"let g:ycm_path_to_python_interpreter = '/usr/bin/python3'
 " let g:ycm_server_python_interpreter = '/usr/bin/python3'
-let g:syntastic_always_populate_loc_list = 1
+"let g:syntastic_always_populate_loc_list = 1
 
 """""""""""""""""""""""""""""""""""""""""""
 "
