@@ -268,8 +268,6 @@ if has("autocmd")
 
     " python, not use <tab>
     autocmd FileType python setlocal et | setlocal sta | setlocal sw=4 | setlocal st=4
-    " python omnifunc
-    autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
     " make set with pyunit
     autocmd BufRead *.py setlocal makeprg=python\ -c\ \"import\ py_compile,sys;\ sys.stderr=sys.stdout;\ py_compile.compile(r'%')\"
     autocmd BufRead *.py setlocal efm=%C\ %.%#,%A\ \ File\ \"%f\"\\,\ line\ %l%.%#,%Z%[%^\ ]%\\@=%m
@@ -292,17 +290,6 @@ if has("autocmd")
         autocmd BufNewFile alltests.py 0r $VIM/vimfiles/skeleton/alltests.py
         autocmd BufNewFile *.py 0r $VIM/vimfiles/skeleton/skeleton.py
     else
-        " :!ctags -R -f python.tags /usr/include/python2.5/
-        " Now set the python.tags to vim tags.
-	autocmd FileType python set tags+=$HOME/.vim/tools/python.tags
-
-        " python auto-complete code(Ctrl-n or Ctrl-p)
-        " Typing the following (in insert mode):
-        "   os.lis<Ctrl-n>
-        " will expand to:
-        "   os.listdir(
-        autocmd FileType python set complete+=k$HOME/.vim/tools/pydiction
-
         " Auto using the skeleton python template file
         autocmd BufNewFile test*.py 0r $HOME/.vim/skeleton/test.py
         autocmd BufNewFile alltests.py 0r $HOME/.vim/skeleton/alltests.py
@@ -445,7 +432,7 @@ let g:EasyGrepFilesToExclude = "*.bak, *~, cscope.*, *.a, *.o, *.pyc, *.bak"
 """""""""""""""""""""""""""""""""""""""""""
 "          fencview
 """""""""""""""""""""""""""""""""""""""""""
-let g:fencview_autodetect = 0
+let g:fencview_autodetect = 1
 let g:fencview_checklines = 100
 let g:fencview_auto_patterns='*'
 map <F2> :FencView<cr>
@@ -477,14 +464,16 @@ let g:syntastic_always_populate_loc_list = 1
 "			vim-lua
 "
 """""""""""""""""""""""""""""""""""""""""""
-let g:lua_interpreter_path = '/usr/bin/lua'
+let g:lua_interpreter_path = '/usr/bin/luajit'
 let g:lua_compiler_name = '/usr/bin/luac'
 let g:lua_complete_omni = 1
-let g:lua_complete_dynamic = 0
+let g:lua_complete_dynamic = 1
 let g:lua_omni_blacklist = ['pl\.strict', 'lgi\..']
 let g:lua_safe_omni_modules = 1
-"let g:lua_define_completefunc = 0
-"let g:lua_define_omnifunc = 0
+let g:lua_check_syntax = 1
+let g:lua_check_globals = 1
+let g:lua_define_completefunc = 1
+let g:lua_define_omnifunc = 1
 
 """""""""""""""""""""""""""""""""""""""""""
 "
