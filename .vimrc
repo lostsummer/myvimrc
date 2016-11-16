@@ -135,6 +135,7 @@ set wig=*.o,*.pyc       " type of file that will not in wildmenu
 set nowrap              " don't break line
 set cursorline          " show current line
 set number              " show line number
+set relativenumber      " show relaive line number
 set autoindent          " always set autoindenting on
 set report=0            " tell us when anything is changed via :...
 set nobackup            " do not keep backup file.
