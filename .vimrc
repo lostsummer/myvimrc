@@ -391,6 +391,7 @@ Plugin 'xolox/vim-misc'
 Plugin 'xolox/vim-lua-ftplugin'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'SirVer/ultisnips'
+Plugin 'fatih/vim-go'
 call vundle#end()
 
 """""""""""""""""""""""""""""""""""""""
@@ -495,3 +496,21 @@ let python_version_2 = 1
 let g:vim_markdown_folding_disabled = 1
 let g:vim_markdown_toc_autofit = 1
 let g:vim_markdown_math = 1
+
+"""""""""""""""""""""""""""""""""""""""""""
+"         vim-go 
+"""""""""""""""""""""""""""""""""""""""""""
+" Use goimports instead of gofmt.
+let g:go_fmt_command = "goimports"
+let g:go_fmt_autofmt = 1
+
+au FileType go nmap <Leader>i <Plug>(go-import)
+au FileType go nmap <Leader>gd <Plug>(go-doc)
+au FileType go nmap <Leader>gv <Plug>(go-doc-vertical)
+au FileType go nmap <leader>r <Plug>(go-run)
+au FileType go nmap <leader>b <Plug>(go-build)
+au FileType go nmap <leader>t <Plug>(go-test)
+au FileType go nmap gd <Plug>(go-def)
+au FileType go nmap <Leader>ds <Plug>(go-def-split)
+au FileType go nmap <Leader>dv <Plug>(go-def-vertical)
+au FileType go nmap <Leader>dt <Plug>(go-def-tab)
