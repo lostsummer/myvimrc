@@ -457,8 +457,10 @@ let g:ycm_confirm_extra_conf = 0
 " Disabel ycm_simple_conf
 "let g:ycm_simple_conf_active = 0
 " let g:ycm_path_to_python_interpreter = '/usr/bin/python'
-let g:ycm_path_to_python_interpreter = '/usr/bin/python3'
+" let g:ycm_path_to_python_interpreter = '/usr/bin/python3'
 " let g:ycm_server_python_interpreter = '/usr/bin/python3'
+let g:ycm_path_to_python_interpreter = '/home/lostsummer/.pyenv/shims/python'
+let g:ycm_server_python_interpreter = '/home/lostsummer/.pyenv/shims/python'
 let g:syntastic_always_populate_loc_list = 1
 
 """""""""""""""""""""""""""""""""""""""""""
@@ -483,7 +485,7 @@ let g:lua_define_omnifunc = 1
 "
 """""""""""""""""""""""""""""""""""""""""""
 let python_highlight_all = 1
-let python_version_2 = 1
+" let python_version_2 = 1
 
 """""""""""""""""""""""""""""""""""""""""""
 "          Power line
