@@ -434,7 +434,7 @@ let g:EasyGrepFilesToExclude = "*.bak, *~, cscope.*, *.a, *.o, *.pyc, *.bak"
 """""""""""""""""""""""""""""""""""""""""""
 "          fencview
 """""""""""""""""""""""""""""""""""""""""""
-let g:fencview_autodetect = 1
+let g:fencview_autodetect = 0
 let g:fencview_checklines = 100
 let g:fencview_auto_patterns='*'
 map <F2> :FencView<cr>
@@ -455,12 +455,12 @@ let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/
 " Do not ask when starting vim
 let g:ycm_confirm_extra_conf = 0
 " Disabel ycm_simple_conf
-"let g:ycm_simple_conf_active = 0
+" let g:ycm_simple_conf_active = 0
 " let g:ycm_path_to_python_interpreter = '/usr/bin/python'
 " let g:ycm_path_to_python_interpreter = '/usr/bin/python3'
 " let g:ycm_server_python_interpreter = '/usr/bin/python3'
-let g:ycm_path_to_python_interpreter = '/home/lostsummer/.pyenv/shims/python'
-let g:ycm_server_python_interpreter = '/home/lostsummer/.pyenv/shims/python'
+" let g:ycm_path_to_python_interpreter = '/home/lostsummer/.pyenv/shims/python'
+" let g:ycm_server_python_interpreter = '/home/lostsummer/.pyenv/shims/python'
 let g:syntastic_always_populate_loc_list = 1
 
 """""""""""""""""""""""""""""""""""""""""""
