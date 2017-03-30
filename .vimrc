@@ -391,6 +391,7 @@ Plugin 'xolox/vim-misc'
 Plugin 'xolox/vim-lua-ftplugin'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'SirVer/ultisnips'
+Plugin 'honza/vim-snippets'
 Plugin 'fatih/vim-go'
 call vundle#end()
 
@@ -462,6 +463,9 @@ let g:ycm_confirm_extra_conf = 0
 " let g:ycm_path_to_python_interpreter = '/home/lostsummer/.pyenv/shims/python'
 " let g:ycm_server_python_interpreter = '/home/lostsummer/.pyenv/shims/python'
 let g:syntastic_always_populate_loc_list = 1
+" avoid conflict with ultisnips
+"let g:ycm_key_list_select_completion = ['<c-n>', '<Down>']
+"let g:ycm_key_list_previous_completion = ['<c-p>', '<Up>']
 
 """""""""""""""""""""""""""""""""""""""""""
 "
@@ -516,3 +520,12 @@ au FileType go nmap gd <Plug>(go-def)
 au FileType go nmap <Leader>ds <Plug>(go-def-split)
 au FileType go nmap <Leader>dv <Plug>(go-def-vertical)
 au FileType go nmap <Leader>dt <Plug>(go-def-tab)
+
+"""""""""""""""""""""""""""""""""""""""""""
+"         ultisnips 
+"""""""""""""""""""""""""""""""""""""""""""
+" avoid confilct with ycm complete
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsListSnippets="<c-tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-j>"
+let g:UltiSnipsJumpBackwardTrigger="<c-k>"
