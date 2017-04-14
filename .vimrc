@@ -28,44 +28,10 @@ endif
 " This must be first, because it changes other options as a side effect.
 set nocompatible
 
-" {{{ Face theme part
-" >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-
-" My best gui face
-" FIXED: can running on gentoo now
 color desert
-if has("win32")
-    set guifont=Consolas:h10.5
-    "set guifont=Yahei_Mono:h11:cGB2312
-else
-    "set guifont=Monospace\ 11
-    "set guifont=WenQuanYi\ Zen\ Hei\ Mono\ 12
-    "set guifont=WenQuanYi\ Micro\ Hei\ Mono\ 11
-    "set guifont=Droid\ Sans\ Mono\ for\ Powerline\ Regular\ 11
-    set guifont=Droid\ Sans\ Mono\ Dotted\ for\ Powerline\ Regular\ 11
-	"let g:Powerline_symbols = 'fancy'
-endif
 
-" FIXED: can running on gentoo now
-if has("win32")
-    language mes en
-    lang english 
-elseif has("mac")
-    "language mes en_US.utf8
-    "lang en_US.utf8
-    language mes zh_CN.UTF-8
-    lang zh_CN.UTF-8
-else
-    language mes zh_CN.utf8
-    lang zh_CN.utf8
-endif
-
-set langmenu=en_US.UTF-8
-
-if has("win32")
-    winsize 100 50
-    winpos  250 0
-endif
+language mes zh_CN.UTF-8
+lang zh_CN.UTF-8
 
 " Toogle Menu and Toolbar
 set guioptions-=t
@@ -110,14 +76,6 @@ if &shell =~? '^[^"].* .*[^"]'
     let &shell='"' . &shell . '"'
 endif
 
-" <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-" }}}
-
-
-" {{{ Misc part
-" >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-
-"
 set whichwrap=h,l,~,b,s,<,>,[,]
 
 " allow backspacing over everything in insert mode
@@ -182,16 +140,6 @@ if has("win32")
     nmap <silent> <Leader>x :call <SID>Console()<CR>
 endif
 
-" floding key binding
-if version >= 600
-    " Reduce folding
-    map <F2> zr
-    map <S-F2> zR
-    " Increase folding
-    map <F3> zm
-    map <S-F3> zM
-endif
-
 
 " Show TAB char and end space
 "set list
@@ -249,14 +197,6 @@ nmap <leader>t :TlistToggle<CR>
 map <silent><A-Right> :tabnext<CR>
 map <silent><A-Left>  :tabprevious<CR>
 
-" <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-" }}}
-
-
-
-
-" {{{ Python part
-" >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 " Only do this part when compiled with support for autocommands.
 if has("autocmd")
@@ -309,10 +249,6 @@ if has("autocmd")
         autocmd BufNewFile *.py 0r $HOME/.vim/skeleton/skeleton.py
     endif
 endif
-
-" <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-" }}}
-
 
 
 " {{{ Quickfix part
