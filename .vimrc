@@ -93,6 +93,7 @@ set wig=*.o,*.pyc       " type of file that will not in wildmenu
 set nowrap              " don't break line
 set cursorline          " show current line
 set number              " show line number
+set relativenumber      " show relaive line number
 set autoindent          " always set autoindenting on
 set report=0            " tell us when anything is changed via :...
 set nobackup            " do not keep backup file.
@@ -208,8 +209,6 @@ if has("autocmd")
 
     " python, not use <tab>
     autocmd FileType python setlocal et | setlocal sta | setlocal sw=4 | setlocal st=4
-    " python omnifunc
-    autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
     " make set with pyunit
     autocmd BufRead *.py setlocal makeprg=python\ -c\ \"import\ py_compile,sys;\ sys.stderr=sys.stdout;\ py_compile.compile(r'%')\"
     autocmd BufRead *.py setlocal efm=%C\ %.%#,%A\ \ File\ \"%f\"\\,\ line\ %l%.%#,%Z%[%^\ ]%\\@=%m
@@ -232,17 +231,6 @@ if has("autocmd")
         autocmd BufNewFile alltests.py 0r $VIM/vimfiles/skeleton/alltests.py
         autocmd BufNewFile *.py 0r $VIM/vimfiles/skeleton/skeleton.py
     else
-        " :!ctags -R -f python.tags /usr/include/python2.5/
-        " Now set the python.tags to vim tags.
-	autocmd FileType python set tags+=$HOME/.vim/tools/python.tags
-
-        " python auto-complete code(Ctrl-n or Ctrl-p)
-        " Typing the following (in insert mode):
-        "   os.lis<Ctrl-n>
-        " will expand to:
-        "   os.listdir(
-        autocmd FileType python set complete+=k$HOME/.vim/tools/pydiction
-
         " Auto using the skeleton python template file
         autocmd BufNewFile test*.py 0r $HOME/.vim/skeleton/test.py
         autocmd BufNewFile alltests.py 0r $HOME/.vim/skeleton/alltests.py
@@ -339,6 +327,8 @@ Plugin 'xolox/vim-misc'
 Plugin 'xolox/vim-lua-ftplugin'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'SirVer/ultisnips'
+Plugin 'honza/vim-snippets'
+Plugin 'fatih/vim-go'
 call vundle#end()
 
 """""""""""""""""""""""""""""""""""""""
@@ -372,7 +362,7 @@ let g:ctrlp_custom_ignore = {
 "           EasyGrep
 "
 """""""""""""""""""""""""""""""""""""""""""
-let g:EasyGrepMode = 2     " All:0, Open Buffers:1, TrackExt:2, 
+let g:EasyGrepMode = 0     " All:0, Open Buffers:1, TrackExt:2, 
 let g:EasyGrepCommand = 1  " Use vimgrep:0, grepprg:1
 let g:EasyGrepRecursive  = 1 " Recursive searching
 let g:EasyGrepIgnoreCase = 1 " not ignorecase:0
@@ -381,7 +371,7 @@ let g:EasyGrepFilesToExclude = "*.bak, *~, cscope.*, *.a, *.o, *.pyc, *.bak"
 """""""""""""""""""""""""""""""""""""""""""
 "          fencview
 """""""""""""""""""""""""""""""""""""""""""
-let g:fencview_autodetect = 0
+let g:fencview_autodetect = 1
 let g:fencview_checklines = 100
 let g:fencview_auto_patterns='*'
 map <F2> :FencView<cr>
@@ -407,20 +397,25 @@ let g:ycm_confirm_extra_conf = 0
 "let g:ycm_path_to_python_interpreter = '/usr/bin/python3'
 " let g:ycm_server_python_interpreter = '/usr/bin/python3'
 let g:syntastic_always_populate_loc_list = 1
+" avoid conflict with ultisnips
+let g:ycm_key_list_select_completion = ['<c-n>', '<Down>']
+let g:ycm_key_list_previous_completion = ['<c-p>', '<Up>']
 
 """""""""""""""""""""""""""""""""""""""""""
 "
 "			vim-lua
 "
 """""""""""""""""""""""""""""""""""""""""""
-let g:lua_interpreter_path = '/usr/bin/lua'
+let g:lua_interpreter_path = '/usr/bin/luajit'
 let g:lua_compiler_name = '/usr/bin/luac'
 let g:lua_complete_omni = 1
-let g:lua_complete_dynamic = 0
+let g:lua_complete_dynamic = 1
 let g:lua_omni_blacklist = ['pl\.strict', 'lgi\..']
 let g:lua_safe_omni_modules = 1
-"let g:lua_define_completefunc = 0
-"let g:lua_define_omnifunc = 0
+let g:lua_check_syntax = 1
+let g:lua_check_globals = 1
+let g:lua_define_completefunc = 1
+let g:lua_define_omnifunc = 1
 
 """""""""""""""""""""""""""""""""""""""""""
 "
@@ -441,3 +436,30 @@ let python_version_2 = 1
 let g:vim_markdown_folding_disabled = 1
 let g:vim_markdown_toc_autofit = 1
 let g:vim_markdown_math = 1
+
+"""""""""""""""""""""""""""""""""""""""""""
+"         vim-go 
+"""""""""""""""""""""""""""""""""""""""""""
+" Use goimports instead of gofmt.
+let g:go_fmt_command = "goimports"
+let g:go_fmt_autofmt = 1
+
+au FileType go nmap <Leader>i <Plug>(go-import)
+au FileType go nmap <Leader>gd <Plug>(go-doc)
+au FileType go nmap <Leader>gv <Plug>(go-doc-vertical)
+au FileType go nmap <leader>r <Plug>(go-run)
+au FileType go nmap <leader>b <Plug>(go-build)
+au FileType go nmap <leader>t <Plug>(go-test)
+au FileType go nmap gd <Plug>(go-def)
+au FileType go nmap <Leader>ds <Plug>(go-def-split)
+au FileType go nmap <Leader>dv <Plug>(go-def-vertical)
+au FileType go nmap <Leader>dt <Plug>(go-def-tab)
+
+"""""""""""""""""""""""""""""""""""""""""""
+"         ultisnips 
+"""""""""""""""""""""""""""""""""""""""""""
+" avoid confilct with ycm complete
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsListSnippets="<c-tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-j>"
+let g:UltiSnipsJumpBackwardTrigger="<c-k>"
