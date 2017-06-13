@@ -5,8 +5,6 @@
 "./configure --with-features=huge \
 "            --enable-multibyte \
 "            --enable-rubyinterp \
-"            --enable-pythoninterp \
-"            --with-python-config-dir=/usr/lib/python2.7/config \
 "            --enable-python3interp \
 "            --with-python3-config-dir=/usr/lib/python3.4/config-3.4m-x86_64-linux-gnu \
 "            --enable-perlinterp \
@@ -132,6 +130,9 @@ autocmd BufRead *.py setlocal efm=%C\ %.%#,%A\ \ File\ \"%f\"\\,\ line\ %l%.%#,%
 autocmd BufNewFile test*.py 0r $HOME/.vim/skeleton/test.py
 autocmd BufNewFile alltests.py 0r $HOME/.vim/skeleton/alltests.py
 autocmd BufNewFile *.py 0r $HOME/.vim/skeleton/skeleton.py
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 
 let g:Tlist_Use_Right_Window=1
@@ -142,6 +143,11 @@ let g:Tlist_WinWidth=30
 let g:Tlist_Show_One_File=1
 let g:Tlist_Process_File_Always=1
 let g:Tlist_File_Fold_Auto_Close=1
+
+nnoremap <F4> :UndotreeToggle<cr>
+" NERDTree Open
+
+nnoremap <F3> :NERDTreeToggle<CR>
 
 " visible mode use ,t to open Tlist
 nmap <leader>t :TlistToggle<CR>
@@ -187,6 +193,11 @@ Plugin 'gmarik/vundle'
 " my Plugin here:
 "
 " original repos on github
+Plugin 'scrooloose/nerdtree'
+Plugin 'mbbill/undotree'
+Plugin 'scrooloose/syntastic'
+Plugin 'tpope/vim-fugitive'
+Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'vim-scripts/taglist.vim'
 Plugin 'kien/ctrlp.vim'
 Plugin 'Valloric/YouCompleteMe'
@@ -253,8 +264,8 @@ let g:ycm_path_to_python_interpreter = '/usr/bin/python3'
 " let g:ycm_server_python_interpreter = '/usr/bin/python3'
 let g:syntastic_always_populate_loc_list = 1
 " avoid conflict with ultisnips
-let g:ycm_key_list_select_completion = ['<c-n>', '<Down>']
-let g:ycm_key_list_previous_completion = ['<c-p>', '<Up>']
+"let g:ycm_key_list_select_completion = ['<c-n>', '<Down>']
+"let g:ycm_key_list_previous_completion = ['<c-p>', '<Up>']
 
 """""""""""""""""""""""""""""""""""""""""""
 "
@@ -314,7 +325,7 @@ au FileType go nmap <Leader>dt <Plug>(go-def-tab)
 "         ultisnips 
 """""""""""""""""""""""""""""""""""""""""""
 " avoid confilct with ycm complete
-let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsExpandTrigger="<leader><tab>"
 let g:UltiSnipsListSnippets="<c-tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-j>"
-let g:UltiSnipsJumpBackwardTrigger="<c-k>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
