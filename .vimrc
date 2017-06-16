@@ -68,7 +68,7 @@ set virtualedit=onemore                      	"  Allow for cursor beyond last ch
 set relativenumber      " show relaive line number
 set autoindent          " always set autoindenting on
 set report=0            " tell us when anything is changed via :...
-"set nobackup            " do not keep backup file.
+set nobackup            " do not keep backup file.
 set ruler               " show the cursor position all the time
 set showcmd             " display incomplete commands
 set incsearch           " do incremental searching
@@ -76,7 +76,7 @@ set backspace=2         " make backspace work normal
 set whichwrap+=<,>,h,l  " allow backspace and cursor keys to wrap
 "set completeopt=menu    " use popup menu to show possible completions
 set foldenable          " enable folding, I find it very useful
-set foldmethod=manual   " manual, marker, syntax, try set foldcolumn=2
+set foldmethod=syntax   " manual, marker, syntax, try set foldcolumn=2
 " DO NOT BELL!
 set novisualbell        " use visual bell instead of beeping
 set noerrorbells        " do not make noise
@@ -92,12 +92,12 @@ set iskeyword-=-
 " Instead of reverting the cursor to the last position in the buffer, we
 " set it to the first line when editing a git commit message
 au FileType gitcommit au! BufEnter COMMIT_EDITMSG call setpos('.', [0, 1, 1, 0])
-set backup
-if has('persistent_undo')
-	set undofile
-	set undolevels=1000
-	set undoreload=10000
-endif
+"set backup
+"if has('persistent_undo')
+"	set undofile
+"	set undolevels=1000
+"	set undoreload=10000
+"endif
 
 " Set mapleader
 let mapleader = ","
@@ -121,7 +121,7 @@ autocmd fileType sh setlocal sw=4 | setlocal sta
 autocmd BufNewFile,BufReadPost *.spec setf spec
 
 " python, not use <tab>
-autocmd FileType python setlocal et | setlocal sta | setlocal sw=4 | setlocal st=4
+autocmd FileType python setlocal et | setlocal sta | setlocal sw=4 | setlocal st=4 | setlocal fdm=indent
 " make set with pyunit
 autocmd BufRead *.py setlocal makeprg=python\ -c\ \"import\ py_compile,sys;\ sys.stderr=sys.stdout;\ py_compile.compile(r'%')\"
 autocmd BufRead *.py setlocal efm=%C\ %.%#,%A\ \ File\ \"%f\"\\,\ line\ %l%.%#,%Z%[%^\ ]%\\@=%m
@@ -193,6 +193,9 @@ Plugin 'gmarik/vundle'
 " my Plugin here:
 "
 " original repos on github
+Plugin 'kopischke/vim-stay'
+Plugin 'Konfekt/FastFold'
+Plugin 'tmhedberg/SimpylFold'
 Plugin 'scrooloose/nerdtree'
 Plugin 'mbbill/undotree'
 Plugin 'scrooloose/syntastic'
@@ -237,10 +240,10 @@ let g:ctrlp_custom_ignore = {
 "
 """""""""""""""""""""""""""""""""""""""""""
 let g:EasyGrepMode = 0     " All:0, Open Buffers:1, TrackExt:2, 
-let g:EasyGrepCommand = 1  " Use vimgrep:0, grepprg:1
+let g:EasyGrepCommand = 0  " Use vimgrep:0, grepprg:1
 let g:EasyGrepRecursive  = 1 " Recursive searching
 let g:EasyGrepIgnoreCase = 1 " not ignorecase:0
-let g:EasyGrepFilesToExclude = "*.bak, *~, cscope.*, *.a, *.o, *.pyc, *.bak"
+let g:EasyGrepFilesToExclude = "*.bak, *~, cscope.*, *.a, *.o, *.pyc, *.bak, *.git"
 
 """""""""""""""""""""""""""""""""""""""""""
 "
@@ -329,3 +332,21 @@ let g:UltiSnipsExpandTrigger="<leader><tab>"
 let g:UltiSnipsListSnippets="<c-tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+
+"""""""""""""""""""""""""""""""""""""""""""
+"      tmhedberg/SimpylFold   
+"""""""""""""""""""""""""""""""""""""""""""
+let g:SimpylFold_docstring_preview = 1
+
+"""""""""""""""""""""""""""""""""""""""""""
+"     
+"
+nmap zuz <Plug>(FastFoldUpdate)
+let g:fastfold_savehook = 1
+let g:fastfold_fold_command_suffixes = ['x','X','a','A','o','O','c','C','r','R','m','M','i','n','N']
+let g:fastfold_fold_movement_commands = [']z', '[z', 'zj', 'zk']
+let g:tex_fold_enabled=1
+let g:vimsyn_folding='af'
+let g:xml_syntax_folding = 1
+let g:php_folding = 1
+let g:perl_fold = 1
