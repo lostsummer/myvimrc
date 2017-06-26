@@ -240,10 +240,10 @@ let g:ctrlp_custom_ignore = {
 "
 """""""""""""""""""""""""""""""""""""""""""
 let g:EasyGrepMode = 0     " All:0, Open Buffers:1, TrackExt:2, 
-let g:EasyGrepCommand = 0  " Use vimgrep:0, grepprg:1
+let g:EasyGrepCommand = 1  " Use vimgrep:0, grepprg:1
 let g:EasyGrepRecursive  = 1 " Recursive searching
 let g:EasyGrepIgnoreCase = 1 " not ignorecase:0
-let g:EasyGrepFilesToExclude = "*.bak, *~, cscope.*, *.a, *.o, *.pyc, *.bak, *.git"
+let g:EasyGrepFilesToExclude = "*.bak,*~,cscope.*,*.a,*.o,*.pyc,*.bak,*.git,*.svn"
 
 """""""""""""""""""""""""""""""""""""""""""
 "
