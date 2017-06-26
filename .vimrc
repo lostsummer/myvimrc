@@ -239,6 +239,9 @@ let g:ctrlp_custom_ignore = {
 "           EasyGrep
 "
 """""""""""""""""""""""""""""""""""""""""""
+" ag is faster than grep and has nicer output
+" apt-get install silversearcher-ag
+set grepprg=ag\ --nogroup\ --nocolor
 let g:EasyGrepMode = 0     " All:0, Open Buffers:1, TrackExt:2, 
 let g:EasyGrepCommand = 1  " Use vimgrep:0, grepprg:1
 let g:EasyGrepRecursive  = 1 " Recursive searching
