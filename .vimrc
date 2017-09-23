@@ -209,9 +209,6 @@ if has("autocmd")
 
     " python, not use <tab>
     autocmd FileType python setlocal et | setlocal sta | setlocal sw=4 | setlocal st=4
-    " make set with pyunit
-    autocmd BufRead *.py setlocal makeprg=python\ -c\ \"import\ py_compile,sys;\ sys.stderr=sys.stdout;\ py_compile.compile(r'%')\"
-    autocmd BufRead *.py setlocal efm=%C\ %.%#,%A\ \ File\ \"%f\"\\,\ line\ %l%.%#,%Z%[%^\ ]%\\@=%m
 
     " FIXED: can running on gentoo now
     if has("win32")
@@ -371,7 +368,7 @@ let g:EasyGrepFilesToExclude = "*.bak, *~, cscope.*, *.a, *.o, *.pyc, *.bak"
 """""""""""""""""""""""""""""""""""""""""""
 "          fencview
 """""""""""""""""""""""""""""""""""""""""""
-let g:fencview_autodetect = 1
+let g:fencview_autodetect = 0
 let g:fencview_checklines = 100
 let g:fencview_auto_patterns='*'
 map <F2> :FencView<cr>
@@ -395,7 +392,7 @@ let g:ycm_confirm_extra_conf = 0
 "let g:ycm_simple_conf_active = 0
 " let g:ycm_path_to_python_interpreter = '/usr/bin/python'
 "let g:ycm_path_to_python_interpreter = '/usr/bin/python3'
-" let g:ycm_server_python_interpreter = '/usr/bin/python3'
+let g:ycm_server_python_interpreter = '/usr/local/bin/python3'
 let g:syntastic_always_populate_loc_list = 1
 " avoid conflict with ultisnips
 let g:ycm_key_list_select_completion = ['<c-n>', '<Down>']
@@ -423,12 +420,6 @@ let g:lua_define_omnifunc = 1
 "
 """""""""""""""""""""""""""""""""""""""""""
 let python_highlight_all = 1
-let python_version_2 = 1
-
-"""""""""""""""""""""""""""""""""""""""""""
-"          Power line
-"""""""""""""""""""""""""""""""""""""""""""
-"set rtp+=/usr/lib/python2.7/dist-packages/powerline/bindings/vim
 
 """""""""""""""""""""""""""""""""""""""""""
 "         vim-markdown 
