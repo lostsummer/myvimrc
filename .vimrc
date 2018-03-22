@@ -65,7 +65,7 @@ set wig=*.o,*.pyc       						" type of file that will not in wildmenu
 set nowrap              						" don't break line
 "set cursorline          " show current line
 set virtualedit=onemore                      	"  Allow for cursor beyond last character"
-set relativenumber      " show relaive line number
+"set relativenumber      " show relaive line number
 set autoindent          " always set autoindenting on
 set report=0            " tell us when anything is changed via :...
 set nobackup            " do not keep backup file.
@@ -219,6 +219,7 @@ Plugin 'terryma/vim-multiple-cursors'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 Plugin 'fatih/vim-go'
+Plugin 'mattn/emmet-vim'
 call vundle#end()
 
 """""""""""""""""""""""""""""""""""""""""""
@@ -284,8 +285,8 @@ let g:lua_complete_omni = 1
 let g:lua_complete_dynamic = 1
 let g:lua_omni_blacklist = ['pl\.strict', 'lgi\..']
 let g:lua_safe_omni_modules = 1
-let g:lua_check_syntax = 1
-let g:lua_check_globals = 1
+let g:lua_check_syntax = 0
+let g:lua_check_globals = 0
 let g:lua_define_completefunc = 1
 let g:lua_define_omnifunc = 1
 
