@@ -296,7 +296,7 @@ let g:lua_define_omnifunc = 1
 "
 """""""""""""""""""""""""""""""""""""""""""
 let python_highlight_all = 1
-let python_version_2 = 1
+"let python_version_2 = 1
 
 """""""""""""""""""""""""""""""""""""""""""
 "          Power line
