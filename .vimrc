@@ -181,46 +181,43 @@ set autochdir
 "set noendofline binary
 
 """""""""""""""""""""""""""""""""""""""""
-" Vundle Management
-" First get vundle
-" git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
+" vim-plug Management
+" First get vim-plug
+" curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+"     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 "
 """""""""""""""""""""""""""""""""""""""""
-set rtp+=~/.vim/bundle/vundle/
-call vundle#begin()
-" let Vundle manage Vundle
-Plugin 'gmarik/vundle'
-" my Plugin here:
-"
+
+call plug#begin('~/.vim/plugged')
 " original repos on github
-Plugin 'kopischke/vim-stay'
-Plugin 'Konfekt/FastFold'
-Plugin 'tmhedberg/SimpylFold'
-Plugin 'scrooloose/nerdtree'
-Plugin 'mbbill/undotree'
-Plugin 'scrooloose/syntastic'
-Plugin 'tpope/vim-fugitive'
-Plugin 'Xuyuanp/nerdtree-git-plugin'
-Plugin 'vim-scripts/taglist.vim'
-Plugin 'kien/ctrlp.vim'
-Plugin 'Valloric/YouCompleteMe'
-Plugin 'tpope/vim-surround'
-Plugin 'EasyGrep'
-Plugin 'jiangmiao/auto-pairs'
-Plugin 'nvie/vim-flake8'
-Plugin 'hdima/python-syntax'
-Plugin 'powerline/powerline', {'rtp': 'powerline/bindings/vim/'}
-Plugin 'vim-scripts/nginx.vim'
-Plugin 'godlygeek/tabular'
-Plugin 'plasticboy/vim-markdown'
-Plugin 'xolox/vim-misc'
-Plugin 'xolox/vim-lua-ftplugin'
-Plugin 'terryma/vim-multiple-cursors'
-Plugin 'SirVer/ultisnips'
-Plugin 'honza/vim-snippets'
-Plugin 'fatih/vim-go'
-Plugin 'mattn/emmet-vim'
-call vundle#end()
+Plug 'kopischke/vim-stay'
+Plug 'Konfekt/FastFold'
+Plug 'tmhedberg/SimpylFold'
+Plug 'scrooloose/nerdtree'
+Plug 'mbbill/undotree'
+Plug 'scrooloose/syntastic'
+Plug 'tpope/vim-fugitive'
+Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'vim-scripts/taglist.vim'
+Plug 'kien/ctrlp.vim'
+Plug 'Valloric/YouCompleteMe'
+Plug 'tpope/vim-surround'
+Plug 'vim-scripts/EasyGrep'
+Plug 'jiangmiao/auto-pairs'
+Plug 'nvie/vim-flake8'
+Plug 'hdima/python-syntax'
+Plug 'powerline/powerline', {'rtp': 'powerline/bindings/vim/'}
+Plug 'vim-scripts/nginx.vim'
+Plug 'godlygeek/tabular'
+Plug 'plasticboy/vim-markdown'
+Plug 'xolox/vim-misc'
+Plug 'xolox/vim-lua-ftplugin'
+Plug 'terryma/vim-multiple-cursors'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+Plug 'fatih/vim-go'
+Plug 'mattn/emmet-vim'
+call plug#end()
 
 """""""""""""""""""""""""""""""""""""""""""
 "
