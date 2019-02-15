@@ -6,7 +6,7 @@
 "            --enable-multibyte \
 "            --enable-rubyinterp \
 "            --enable-python3interp \
-"            --with-python3-config-dir=/usr/lib/python3.4/config-3.4m-x86_64-linux-gnu \
+"            --with-python3-config-dir=/usr/lib/python3.6/config-3.6m-x86_64-linux-gnu \
 "            --enable-perlinterp \
 "            --enable-luainterp \
 "            --enable-gui=gtk2 --enable-cscope --prefix=/usr
@@ -23,7 +23,7 @@ set encoding=utf-8
 color desert
 filetype plugin indent on
 syntax on
-set guifont=Droid\ Sans\ Mono\ Dotted\ for\ Powerline\ Regular\ 11
+set guifont=Droid\ Sans\ Mono\ Dotted\ for\ Powerline\ Regular\ 14
 
 " Toogle Menu and Toolbar
 set guioptions-=t
