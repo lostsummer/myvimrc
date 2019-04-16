@@ -217,6 +217,7 @@ Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'fatih/vim-go'
 Plug 'mattn/emmet-vim'
+Plug 'scrooloose/nerdcommenter'
 call plug#end()
 
 """""""""""""""""""""""""""""""""""""""""""
