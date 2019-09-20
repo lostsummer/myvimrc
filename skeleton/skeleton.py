@@ -1,7 +1,5 @@
 #!/usr/bin/env python
+# -*- coding: utf-8 -*-
 
-"""docstring
-"""
 
-__revision__ = '0.1'
-
+if __name__ == "__main__":
