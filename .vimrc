@@ -198,28 +198,26 @@ Plug 'tmhedberg/SimpylFold'
 Plug 'scrooloose/nerdtree'
 Plug 'mbbill/undotree'
 Plug 'scrooloose/syntastic'
-Plug 'tpope/vim-fugitive'
+"Plug 'tpope/vim-fugitive'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'vim-scripts/taglist.vim'
 Plug 'kien/ctrlp.vim'
-Plug 'Valloric/YouCompleteMe'
 Plug 'tpope/vim-surround'
 Plug 'vim-scripts/EasyGrep'
 Plug 'jiangmiao/auto-pairs'
 Plug 'nvie/vim-flake8'
 Plug 'hdima/python-syntax'
-Plug 'powerline/powerline', {'rtp': 'powerline/bindings/vim/'}
 Plug 'vim-scripts/nginx.vim'
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
-Plug 'xolox/vim-misc'
-Plug 'xolox/vim-lua-ftplugin'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
 Plug 'fatih/vim-go'
 Plug 'mattn/emmet-vim'
 Plug 'scrooloose/nerdcommenter'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 call plug#end()
 
 """""""""""""""""""""""""""""""""""""""""""
@@ -249,59 +247,7 @@ let g:EasyGrepRecursive  = 1 " Recursive searching
 let g:EasyGrepIgnoreCase = 1 " not ignorecase:0
 let g:EasyGrepFilesToExclude = "*.bak,*~,cscope.*,*.a,*.o,*.pyc,*.bak,*.git,*.svn"
 
-"""""""""""""""""""""""""""""""""""""""""""
-"
-"           YouCompleteMe
-"
-"""""""""""""""""""""""""""""""""""""""""""
-" ycm install command
-" python3 install.py --clang-completer  --gocode-completer
 
-nnoremap <leader>j :YcmCompleter GoToDefinitionElseDeclaration<CR>
-nnoremap <leader>jd :YcmCompleter GoToDefinition<CR>
-" nnoremap <leader>j :YcmCompleter GoTo<CR>
-nnoremap <F5> :YcmForceCompileAndDiagnostics<CR>
-let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
-" Do not ask when starting vim
-let g:ycm_confirm_extra_conf = 0
-" Disabel ycm_simple_conf
-"let g:ycm_simple_conf_active = 0
-" let g:ycm_path_to_python_interpreter = '/usr/bin/python'
-" let g:ycm_path_to_python_interpreter = '/usr/bin/python3'
-" let g:ycm_server_python_interpreter = '/usr/bin/python3'
-let g:syntastic_always_populate_loc_list = 1
-" avoid conflict with ultisnips
-"let g:ycm_key_list_select_completion = ['<c-n>', '<Down>']
-"let g:ycm_key_list_previous_completion = ['<c-p>', '<Up>']
-
-"""""""""""""""""""""""""""""""""""""""""""
-"
-"			vim-lua
-"
-"""""""""""""""""""""""""""""""""""""""""""
-let g:lua_interpreter_path = '/usr/bin/luajit'
-let g:lua_compiler_name = '/usr/bin/luac'
-let g:lua_complete_omni = 1
-let g:lua_complete_dynamic = 1
-let g:lua_omni_blacklist = ['pl\.strict', 'lgi\..']
-let g:lua_safe_omni_modules = 1
-let g:lua_check_syntax = 0
-let g:lua_check_globals = 0
-let g:lua_define_completefunc = 1
-let g:lua_define_omnifunc = 1
-
-"""""""""""""""""""""""""""""""""""""""""""
-"
-"			Python Syntax
-"
-"""""""""""""""""""""""""""""""""""""""""""
-let python_highlight_all = 1
-"let python_version_2 = 1
-
-"""""""""""""""""""""""""""""""""""""""""""
-"          Power line
-"""""""""""""""""""""""""""""""""""""""""""
-"set rtp+=/usr/lib/python2.7/dist-packages/powerline/bindings/vim
 
 """""""""""""""""""""""""""""""""""""""""""
 "         vim-markdown 
@@ -354,3 +300,62 @@ let g:vimsyn_folding='af'
 let g:xml_syntax_folding = 1
 let g:php_folding = 1
 let g:perl_fold = 1
+
+""""""""""""""""""""""""""""""""""""""""""
+" coc.nvim
+""""""""""""""""""""""""""""""""""""""""""
+nmap <leader>j <Plug>(coc-declaration)
+nmap <leader>jd <Plug>(coc-definition)
+nmap <leader>rn <Plug>(coc-rename)
+
+""""""""""""""""""""""""""""""""""""""""""
+" airline
+""""""""""""""""""""""""""""""""""""""""""
+" 设置状态栏
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#left_alt_sep = '|'
+let g:airline#extensions#tabline#buffer_nr_show = 0
+let g:airline#extensions#tabline#formatter = 'default'
+let g:airline_theme = 'angr'  " 主题
+let g:airline#extensions#keymap#enabled = 1
+let g:airline#extensions#tabline#buffer_idx_mode = 1
+let g:airline#extensions#tabline#buffer_idx_format = {
+       \ '0': '0 ',
+       \ '1': '1 ',
+       \ '2': '2 ',
+       \ '3': '3 ',
+       \ '4': '4 ',
+       \ '5': '5 ',
+       \ '6': '6 ',
+       \ '7': '7 ',
+       \ '8': '8 ',
+       \ '9': '9 '
+       \}
+" 设置切换tab的快捷键 <\> + <i> 切换到第i个 tab
+nmap <leader>1 <Plug>AirlineSelectTab1
+nmap <leader>2 <Plug>AirlineSelectTab2
+nmap <leader>3 <Plug>AirlineSelectTab3
+nmap <leader>4 <Plug>AirlineSelectTab4
+nmap <leader>5 <Plug>AirlineSelectTab5
+nmap <leader>6 <Plug>AirlineSelectTab6
+nmap <leader>7 <Plug>AirlineSelectTab7
+nmap <leader>8 <Plug>AirlineSelectTab8
+nmap <leader>9 <Plug>AirlineSelectTab9
+" 设置切换tab的快捷键 <\> + <-> 切换到前一个 tab
+nmap <leader>- <Plug>AirlineSelectPrevTab
+" 设置切换tab的快捷键 <\> + <+> 切换到后一个 tab
+nmap <leader>+ <Plug>AirlineSelectNextTab
+" 设置切换tab的快捷键 <\> + <q> 退出当前的 tab
+nmap <leader>q :bp<cr>:bd #<cr>
+" 修改了一些个人不喜欢的字符
+"if !exists('g:airline_symbols')
+"    let g:airline_symbols = {}
+"endif
+"let g:airline_symbols.linenr = "CL" " current line
+"let g:airline_symbols.whitespace = '|'
+"let g:airline_symbols.maxlinenr = 'Ml' "maxline
+"let g:airline_symbols.branch = 'BR'
+"let g:airline_symbols.readonly = "RO"
+"let g:airline_symbols.dirty = "DT"
+"let g:airline_symbols.crypt = "CR"
+
