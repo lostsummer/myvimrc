@@ -1,22 +1,4 @@
 " $VIM/.vimrc
-" my vim compile option:
-" enable python3 support for ycm unicode
-
-"./configure --with-features=huge \
-"            --enable-multibyte \
-"            --enable-rubyinterp=yes \
-"            --enable-python3interp=yes \
-"            --with-python3-config-dir=/usr/lib/python3.6/config-3.6m-x86_64-linux-gnu \
-"            --enable-perlinterp=yes \
-"            --enable-luainterp=yes \
-"            --enable-cscope \
-"            --prefix=/usr \
-"            --enable-gui=gtk2 
-
-
-" thisfile@github
-" git clone https://github.com/lostsummer/myvimrc.git ~/.vim
-
 
 scriptencoding utf-8
 set fileencodings=utf-8,ucs-bom,gb18030,gbk,gb2312,cp936 " support for open multi-byte encoded file
@@ -65,7 +47,7 @@ set isk+=$,%,#          						" none of these should be word dividers
 set wildmenu            						" :h and press <Tab> to see what happens
 set wig=*.o,*.pyc       						" type of file that will not in wildmenu
 set nowrap              						" don't break line
-"set cursorline          " show current line
+set cursorline          " show current line
 set virtualedit=onemore                      	"  Allow for cursor beyond last character"
 "set relativenumber      " show relaive line number
 set autoindent          " always set autoindenting on
@@ -76,7 +58,7 @@ set showcmd             " display incomplete commands
 set incsearch           " do incremental searching
 set backspace=2         " make backspace work normal
 set whichwrap+=<,>,h,l  " allow backspace and cursor keys to wrap
-"set completeopt=menu    " use popup menu to show possible completions
+set completeopt=menu    " use popup menu to show possible completions
 set foldenable          " enable folding, I find it very useful
 set foldmethod=syntax   " manual, marker, syntax, try set foldcolumn=2
 " DO NOT BELL!
@@ -123,10 +105,10 @@ autocmd fileType sh setlocal sw=4 | setlocal sta
 autocmd BufNewFile,BufReadPost *.spec setf spec
 
 " python, not use <tab>
-autocmd FileType python setlocal et | setlocal sta | setlocal sw=4 | setlocal st=4 | setlocal fdm=indent
+"autocmd FileType python setlocal et | setlocal sta | setlocal sw=4 | setlocal st=4 | setlocal fdm=indent
 " make set with pyunit
-autocmd BufRead *.py setlocal makeprg=python\ -c\ \"import\ py_compile,sys;\ sys.stderr=sys.stdout;\ py_compile.compile(r'%')\"
-autocmd BufRead *.py setlocal efm=%C\ %.%#,%A\ \ File\ \"%f\"\\,\ line\ %l%.%#,%Z%[%^\ ]%\\@=%m
+"autocmd BufRead *.py setlocal makeprg=python\ -c\ \"import\ py_compile,sys;\ sys.stderr=sys.stdout;\ py_compile.compile(r'%')\"
+"autocmd BufRead *.py setlocal efm=%C\ %.%#,%A\ \ File\ \"%f\"\\,\ line\ %l%.%#,%Z%[%^\ ]%\\@=%m
 
 " Auto using the skeleton python template file
 autocmd BufNewFile test*.py 0r $HOME/.vim/skeleton/test.py
