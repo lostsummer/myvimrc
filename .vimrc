@@ -7,7 +7,8 @@ set encoding=utf-8
 color desert
 filetype plugin indent on
 syntax on
-set guifont=Droid\ Sans\ Mono\ Dotted\ for\ Powerline\ Regular\ 14
+" set guifont=Droid\ Sans\ Mono\ Dotted\ for\ Powerline\ Regular\ 14
+set guifont=WenQuanYi\ Micro\ Hei\ Mono\ 13
 
 " Toogle Menu and Toolbar
 set guioptions-=t
@@ -187,13 +188,11 @@ Plug 'kien/ctrlp.vim'
 Plug 'tpope/vim-surround'
 Plug 'vim-scripts/EasyGrep'
 Plug 'jiangmiao/auto-pairs'
-Plug 'nvie/vim-flake8'
-Plug 'hdima/python-syntax'
 Plug 'vim-scripts/nginx.vim'
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
 Plug 'terryma/vim-multiple-cursors'
-Plug 'SirVer/ultisnips'
+"Plug 'SirVer/ultisnips'
 Plug 'fatih/vim-go'
 Plug 'mattn/emmet-vim'
 Plug 'scrooloose/nerdcommenter'
@@ -222,9 +221,10 @@ let g:ctrlp_custom_ignore = {
 """""""""""""""""""""""""""""""""""""""""""
 " ag is faster than grep and has nicer output
 " apt-get install silversearcher-ag
-set grepprg=ag\ --nogroup\ --nocolor
+" set grepprg=ag\ --nogroup\ --nocolor
 let g:EasyGrepMode = 0     " All:0, Open Buffers:1, TrackExt:2, 
-let g:EasyGrepCommand = 1  " Use vimgrep:0, grepprg:1
+"let g:EasyGrepCommand = 1  " Use vimgrep:0, grepprg:1
+let g:EasyGrepCommand = 0  " Use vimgrep:0, grepprg:1
 let g:EasyGrepRecursive  = 1 " Recursive searching
 let g:EasyGrepIgnoreCase = 1 " not ignorecase:0
 let g:EasyGrepFilesToExclude = "*.bak,*~,cscope.*,*.a,*.o,*.pyc,*.bak,*.git,*.svn"
@@ -266,10 +266,10 @@ au FileType go nmap <Leader>dt <Plug>(go-def-tab)
 "         ultisnips 
 """""""""""""""""""""""""""""""""""""""""""
 " avoid confilct with ycm complete
-let g:UltiSnipsExpandTrigger="<leader><tab>"
-let g:UltiSnipsListSnippets="<c-tab>"
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+"let g:UltiSnipsExpandTrigger="<leader><tab>"
+"let g:UltiSnipsListSnippets="<c-tab>"
+"let g:UltiSnipsJumpForwardTrigger="<tab>"
+"let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
 """""""""""""""""""""""""""""""""""""""""""
 "      tmhedberg/SimpylFold   
@@ -324,21 +324,32 @@ function! s:check_back_space() abort
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
-" Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
 inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#pum#visible() ? coc#pum#next(1) :
+      \ CheckBackspace() ? "\<Tab>" :
       \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
 
-" Use <c-space> to trigger completion.
+" Make <CR> to accept selected completion item or notify coc.nvim to format
+" <C-g>u breaks current undo, please make your own choice.
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
+function! CheckBackspace() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
 inoremap <silent><expr> <c-space> coc#refresh()
-
-" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current position.
-" Coc only does snippet and additional edit on confirm.
-inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-" Or use `complete_info` if your vim support it, like:
-" inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
+inoremap <silent><expr> <c-o> coc#refresh()
+function! Show_documentation()
+	call CocActionAsync('highlight')
+	if (index(['vim','help'], &filetype) >= 0)
+		execute 'h '.expand('<cword>')
+	else
+		call CocAction('doHover')
+	endif
+endfunction
+nnoremap <LEADER>h :call Show_documentation()<CR>
 
 " Use `[g` and `]g` to navigate diagnostics
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
@@ -349,17 +360,6 @@ nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
-
-" Use K to show documentation in preview window
-nnoremap <silent> K :call <SID>show_documentation()<CR>
-
-function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  else
-    call CocAction('doHover')
-  endif
-endfunction
 
 " Highlight symbol under cursor on CursorHold
 autocmd CursorHold * silent call CocActionAsync('highlight')
@@ -479,3 +479,10 @@ nmap <leader>w :bp<cr>:bd #<cr>
 "let g:airline_symbols.dirty = "DT"
 "let g:airline_symbols.crypt = "CR"
 
+if !has('nvim')
+    set ttymouse=xterm2
+endif
+
+if exists(':tnoremap')
+    tnoremap <Esc> <C-\><C-n>
+endif
